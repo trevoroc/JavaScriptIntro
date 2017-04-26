@@ -199,3 +199,27 @@ function mergeSort(array) {
 }
 
 mergeSort([5, 4, 3, 2, 1, 7, 22]);
+
+
+function subsets(array) {
+  if (array.length === 0) {
+    return [[]];
+  }
+
+  let subsWithout = subsets(array.slice(0, array.length - 1));
+
+  // console.log(`subsWithout: ${subsWithout}`);
+
+  let subsWith = subsWithout.map( ele => {
+    return ele.concat([array[array.length - 1]]);
+  });
+
+  // console.log(`subsWith: ${subsWith}`);
+
+  return subsWithout.concat(subsWith);
+}
+
+subsets([]) === [[]];
+subsets([1]) === [[], [1]];
+subsets([1, 2]) === [[], [1], [2], [1, 2]];
+subsets([1, 2, 3]) === [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]];
