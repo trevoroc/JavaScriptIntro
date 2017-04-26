@@ -52,3 +52,15 @@ Array.prototype.sum = function() {
     return this[0] + this.slice(1).sum();
   }
 };
+
+// [1,1,1,2].sum();
+
+function exponent1(base, exp) {
+  if (exp === 0) {
+    return 1;
+  } else {
+    return base * exponent1(base, exp - 1);
+  }
+}
+
+exponent1(2, 3);
