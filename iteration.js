@@ -119,10 +119,51 @@ function bSearch(array, target) {
   }
 }
 
-bSearch([1, 2, 3], 1) === 0;
-bSearch([2, 3, 4, 5], 3) === 1;
-bSearch([2, 4, 6, 8, 10], 6) === 2;
-bSearch([1, 3, 4, 5, 9], 5) === 3;
-bSearch([1, 2, 3, 4, 5, 6], 6) === 5;
-bSearch([1, 2, 3, 4, 5, 6], 0) === null;
-bSearch([1, 2, 3, 4, 5, 7], 6) === null;
+// bSearch([1, 2, 3], 1) === 0;
+// bSearch([2, 3, 4, 5], 3) === 1;
+// bSearch([2, 4, 6, 8, 10], 6) === 2;
+// bSearch([1, 3, 4, 5, 9], 5) === 3;
+// bSearch([1, 2, 3, 4, 5, 6], 6) === 5;
+// bSearch([1, 2, 3, 4, 5, 6], 0) === null;
+// bSearch([1, 2, 3, 4, 5, 7], 6) === null;
+
+function makeChange(total, coins) {
+
+  if (total === 0) {
+    return [];
+  } else if (total - coins[0] >= 0) {
+    let tempChange = makeChange(total - coins[0], coins);
+
+    tempChange.unshift(coins[0]);
+    return tempChange;
+  } else {
+    return makeChange(total, coins.slice(1));
+  }
+}
+
+// makeChange(14, [10, 7, 1]);
+
+function makeBetterChange(total, coins) {
+  let best;
+
+  if (total === 0) {
+    return [];
+  } else if (total - coins[0] >= 0) {
+
+    for (let i = 0; i < coins.length; i++) {
+      let coin = coins[i];
+      let subChange = makeBetterChange(total - coin, coins);
+      let changeCombo = [coin].concat(subChange);
+
+      if (best === undefined || changeCombo.length < best.length) {
+        best = changeCombo;
+      }
+    }
+
+    return best;
+  } else {
+    return makeBetterChange(total, coins.slice(1));
+  }
+}
+
+// makeBetterChange(14, [10, 7, 1]);
