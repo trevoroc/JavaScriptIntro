@@ -28,4 +28,25 @@ Array.prototype.twoSum = function () {
   return twoSums;
 };
 
-[-1, 0, 2, -2, 1].twoSum();
+// [-1, 0, 2, -2, 1].twoSum();
+
+Array.prototype.myTranspose = function() {
+  let transposeArray = [];
+
+  let tempArray;
+  for (let row = 0; row < this.length; row++) {
+    tempArray = [];
+
+    for (let col = 0; col < this.length; col++) {
+      tempArray.push(this[col][row]);
+    }
+
+    transposeArray.push(tempArray);
+  }
+
+  return transposeArray;
+};
+
+let rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
+
+// rows.myTranspose();
