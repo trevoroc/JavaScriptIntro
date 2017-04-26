@@ -63,4 +63,20 @@ function exponent1(base, exp) {
   }
 }
 
-exponent1(2, 3);
+// exponent1(2, 3);
+
+function exponent2(base, exp) {
+  if (exp === 0) {
+    return 1;
+  } else if (exp === 1) {
+    return base;
+  } else if (exp % 2 === 0) {
+    let sqrt = exponent2(base, exp / 2);
+    return sqrt * sqrt;
+  } else {
+    let factor = exponent2(base, (exp - 1) / 2);
+    return base * factor * factor;
+  }
+}
+
+exponent2(2, 3);
