@@ -17,6 +17,20 @@ Array.prototype.myMap = function(callback) {
   return mappedArr;
 };
 
-[1, 2, 3].myMap( el => {
-  return el * 2;
+// [1, 2, 3].myMap( el => {
+//   return el * 2;
+// });
+
+Array.prototype.myInject = function(callback) {
+  let accum = this[0];
+
+  this.slice(1).myEach( (el) => {
+    accum = callback(accum, el);
+  });
+
+  return accum;
+};
+
+[1, 2, 3, 4, 5].myInject( function(accum, el) {
+  return accum + el;
 });
