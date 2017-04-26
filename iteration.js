@@ -18,5 +18,19 @@ Array.prototype.bubbleSort = function() {
   return this;
 };
 
-let arr = [5, 4, 3, 2, 1];
-arr.bubbleSort();
+// let arr = [5, 4, 3, 2, 1];
+// arr.bubbleSort();
+
+function substrings(string) {
+  let substringArr = [];
+
+  for (let i = 0; i < string.length; i++) {
+    for (let j = i + 1; j <= string.length; j++) {
+      substringArr.push(string.substring(i, j));
+    }
+  }
+
+  return substringArr;
+}
+
+substrings("cat");
