@@ -167,3 +167,35 @@ function makeBetterChange(total, coins) {
 }
 
 // makeBetterChange(14, [10, 7, 1]);
+
+function merge(left, right) {
+  let merged = [];
+
+  while (left.length > 0 && right.length > 0) {
+    let elem;
+    if (left[0] < right[0]) {
+      elem = left.shift();
+    } else {
+      elem = right.shift();
+    }
+
+    merged.push(elem);
+  }
+
+  return merged.concat(left).concat(right);
+}
+
+function mergeSort(array) {
+  if (array.length < 2) {
+    return array;
+  } else {
+    let middle = Math.floor(array.length / 2);
+
+    let left = mergeSort(array.slice(0, middle));
+    let right = mergeSort(array.slice(middle));
+
+    return merge(left, right);
+  }
+}
+
+mergeSort([5, 4, 3, 2, 1, 7, 22]);
