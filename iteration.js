@@ -43,4 +43,12 @@ function range(start, end) {
   }
 }
 
-range(1, 5);
+// range(1, 5);
+
+Array.prototype.sum = function() {
+  if (this.length === 0) {
+    return 0;
+  } else {
+    return this[0] + this.slice(1).sum();
+  }
+};
