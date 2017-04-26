@@ -79,4 +79,25 @@ function exponent2(base, exp) {
   }
 }
 
-exponent2(2, 3);
+// exponent2(2, 3);
+
+
+function fibonacci(n) {
+  if (n === 0) {
+    return [];
+  } else if (n === 1) {
+    return [0];
+  } else if (n === 2) {
+    return [0, 1];
+  } else {
+    let fibs = fibonacci(n - 1);
+    let next = fibs[fibs.length - 1] + fibs[fibs.length - 2];
+    console.log(`fibs: ${fibs}`);
+    console.log(`next: ${next}`);
+    fibs.push(next);
+    return fibs;
+  }
+}
+
+// fibonacci(3);
+// fibonacci(9);
