@@ -33,4 +33,14 @@ function substrings(string) {
   return substringArr;
 }
 
-substrings("cat");
+// substrings("cat");
+
+function range(start, end) {
+  if (end < start) {
+    return [];
+  } else {
+    return [start].concat(range(start + 1, end));
+  }
+}
+
+range(1, 5);
