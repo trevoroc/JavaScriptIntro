@@ -4,6 +4,19 @@ Array.prototype.myEach = function(callback) {
   }
 };
 
-[1, 2, 3].myEach( el => {
-  console.log(el);
+// [1, 2, 3].myEach( el => {
+//   console.log(el);
+// });
+
+
+Array.prototype.myMap = function(callback) {
+  let mappedArr = [];
+  this.myEach( function(el) {
+    mappedArr.push(callback(el));
+  });
+  return mappedArr;
+};
+
+[1, 2, 3].myMap( el => {
+  return el * 2;
 });
