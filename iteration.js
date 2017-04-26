@@ -101,3 +101,28 @@ function fibonacci(n) {
 
 // fibonacci(3);
 // fibonacci(9);
+
+function bSearch(array, target) {
+  if (array.length === 0) {
+    return null;
+  }
+
+  let middle = Math.floor(array.length / 2);
+
+  if (array[middle] === target) {
+    return middle;
+  } else if (target < array[middle]) {
+    return bSearch(array.slice(0, middle), target);
+  } else {
+    let results = bSearch(array.slice(middle + 1), target);
+    return results === null ? null : results + middle + 1;
+  }
+}
+
+bSearch([1, 2, 3], 1) === 0;
+bSearch([2, 3, 4, 5], 3) === 1;
+bSearch([2, 4, 6, 8, 10], 6) === 2;
+bSearch([1, 3, 4, 5, 9], 5) === 3;
+bSearch([1, 2, 3, 4, 5, 6], 6) === 5;
+bSearch([1, 2, 3, 4, 5, 6], 0) === null;
+bSearch([1, 2, 3, 4, 5, 7], 6) === null;
